@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" type="images/ico" href="images/cat4.ico" />
+		<title>骨灰级漫迷</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<meta name="keywords" content="前端个人博客" />
+		<meta name="description" content="周芮的个人博客" />
+	</head>
+	<script type="text/javascript" src="js/one.js" ></script>
+	<script type="text/javascript" >
+    
+	   if(isIE = navigator.userAgent.indexOf("MSIE")!=-1) { 
+	        alert('请您使用谷歌或者火狐浏览器打开') 
+	   } 
+	
+</script>
+	<body>
+		<div class="bg_top">
+			<div class="header_bg">
+				<a href="admin.html">管理员入口</a>
+				<div class="header">
+					<a href="#/en/" title="English" class="lan en"></a>
+					<a href="#" title="中文版" class="lan cn" style="background-position:left top;"></a>
+					<img src="images/templatemo_light_off.png" id="light"/>
+				</div>
+			</div>
+		</div>
+		<div class="page_box" style="height:646px;">
+			<br />
+			<div class="index_left"></div>
+			<div class="index_right">
+				<a href="#"><img src="img/cloud_05.jpg" alt="我的博客" /></a>
+			</div>
+			<div class="index_menu">
+				<ul>
+					<li class="menu_1">
+						<a href="about.html" title="关于我"></a>
+					</li>
+					<li class="menu_2">
+						<a href="dairy.html" title="随笔杂谈"></a>
+					</li>
+					<li class="menu_5">
+						<a href="photo.html" title="相册"></a>
+					</li>
+					<li class="menu_6">
+						<a href="message.html" title="留言板"></a>
+					</li>
+					<li class="menu_4">
+						<a href="games.html" title="作品集"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer">
+		</div>
+
+		</div>
+		</div>
+		<div><img src="images/mao.png"  id="mao"/><span id="eyeL"></span><span id="eyeR"></span></div>
+		<img src="images/maoweiba.png"  id="tail"/>
+		<div id="seach">
+			<input id="seachput" type="text" placeholder="相册" />
+			<a href="#">X</a>
+			<div id="seachF"></div>
+			<div id="seachbox">
+				<ul id="seachinfo">
+					<li>相册</li>
+					<li>日志</li>
+					<li>留言板</li>
+					<li>作品</li>
+					<li>简历</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" class="autoinsert" src="js/jquery-1.2.6.min.js"></script>
+<script src="js/snowfall.jquery.js"></script>
+<script>
+	$(document).snowfall('clear');
+	        $(document).snowfall({
+	            image: "images/huaban.png",
+	            flakeCount:30,
+	            minSize: 5,
+	            maxSize: 22
+	        });
+</script>
+<script>
+	var seachput=document.getElementById('seachput');
+	
+	var light=document.getElementById('light');
+	        var seachbox=document.getElementById('seachbox');
+	        var ul=document.getElementById('seachinfo');
+	        var lis=ul.getElementsByTagName('li');
+	        var a=document.getElementById('seach').getElementsByTagName('a')[0];
+	        var index=-1;
+	        var num=120;
+	        var off=true;
+	        var eyeL=document.getElementById('eyeL');
+	        var eyeR=document.getElementById('eyeR');
+	        //控制上下键盘移动
+	        
+		     
+	       function der(der){
+	       	if(der=='up'){
+	       		num=-1;
+	       	}else if(der=='down'){
+	       		num=1;
+	       	}
+	       	index=index+num;
+	       	if(index<0)index=lis.length-1;
+	       	if(index>lis.length-1) index=0;
+		      for(var j=0;j<lis.length;j++){
+		        	lis[j].className='white';
+		      }
+		      lis[index].className='change';
+		      seachput.value=lis[index].innerHTML;
+		      seachput.style.color='#000000';
+		    }
+	       
+	      //获取焦点后输入框的变化
+	        seachput.oninput=function(){
+	        		seachbox.style.display='block';
+	        		a.display='block';
+	        			if(seachput.value==''){
+	        				seachbox.style.display='none';
+	        				a.style.display='none';
+	        			}
+	        			for(var i=0;i<lis.length;i++){
+	        				for(var j=0;j<lis.length;j++){
+		        				lis[i].className='white';
+		        		  }
+	        				if(seachput.value.charAt(0)==lis[i].innerHTML.charAt(0)){
+	        					index=i;
+	        					lis[i].className='change';
+	        					i=lis.length;
+	        				}
+	        			}
+	        		
+	        }
+	        //按下键盘后调用键盘函数进行移动
+	        window.onkeydown=function(ev){
+	        				var e=ev||event;
+	        				if(e.keyCode==38){
+	        					der('up');
+	        				}else if(e.keyCode==40){
+	        					der('down');
+	        				}else if(e.keyCode==13){
+	        					lis[index].onclick();
+	        					switch(seachput.value){
+	        						case '相册':
+	        									window.location='photo.html';
+	        						break;
+	        						case '日志':
+	        									window.location='dairy.html';
+	        						break;
+	        						case '作品':
+	        									window.location='games.html';
+	        						break;
+	        						case '简历':
+	        									window.location='about.html';
+	        						break;
+	        						case '留言板':
+	        									window.location='message.html';
+	        						break;
+	        					}
+	        				}
+	        	}
+	//  Li点击后的背景变化
+	        for(var i=0;i<lis.length;i++){
+	        	lis[i].index=i;
+	        		lis[i].onclick=function(){
+	        			for(var j=0;j<lis.length;j++){
+	        				lis[j].className='white';
+	        			}
+	        			this.className='change';
+	        			index=this.index;
+	        			seachput.value=this.innerHTML;
+	        			seachput.style.color='#000000';
+	        		}
+	        }
+	       //点击X后关闭
+	        a.onclick=function(){
+	        		seachput.value='';
+	        		for(var j=0;j<lis.length;j++){
+	        				lis[j].className='white';
+	        			}
+	        		seachbox.style.display='none';
+	        		index=-1;
+	        }
+	        document.onclick=function(){
+	        		seachbox.style.display='none';
+	        }
+	        //灯开关
+	        light.onmouseover=function(){
+	        		light.src="images/templatemo_light_on.png";
+	        }
+	        light.onmouseout=function(){
+	        		light.src="images/templatemo_light_off.png";
+	        }
+	        //猫眨眼睛
+	        setInterval(function(){
+	        		
+	        		if(num==120){
+	        			off=true;
+	        		}else if(num==127){
+	        			off=false;
+	        		}
+	        		if(off==true){num++;}
+	        		if(off==false){num--;}
+	        		eyeL.style.top=num+'px';
+	        		eyeR.style.top=num+'px';
+	        },150)
+	        
+	        
+	        
+</script>

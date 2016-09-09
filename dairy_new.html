@@ -1,0 +1,64 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="images/ico" href="images/cat4.ico" />
+<title>随笔杂谈</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="js/data.js"></script>
+<script src="js/one.js"></script>
+<script src="js/ajax.js"></script>
+
+<script>
+	window.onload=function(){
+		var seach=window.location.search.substring(1).split('=')[1];	
+		var con_con=document.getElementById('con_con');
+		var a=document.getElementById('con_a');
+		var texta=document.getElementById('texta');
+		var title=document.getElementById('title');
+		var s='';
+		//添加日志
+		a.addEventListener('click',function(){
+			s='dairy='+texta.value+'&title='+title.value;
+			ajax('php/newdairy.php',function(str){
+				alert(str)
+					window.location='dairy.html';
+					
+			},function(){},s)
+		})
+	}
+</script>
+</head>
+<body>
+<div class="bg_top">
+  <div class="header_bg">
+  <div class="header">
+  <a href="index.html" class="logo" title="我的博客"></a>
+  <a href="#/en/" title="English" class="lan en" ></a>
+  <a href="#" title="中文版" class="lan cn" style="background-position:left top;"></a>
+  </div>
+  </div>
+</div>
+<div class="page_box page_box_bg">
+<div class="home_menu"><a href="index.html"></a></div>
+	<!--放日志的-->
+	<div class="t_box">
+		<div id="con">
+			<div id="con_a">
+				<a href="javascript:;"> &nbsp;随笔杂谈</a>
+				<a href="javascript:;"> 添加完成&nbsp;</a>
+				<a href="dairy.html">放弃添加</a>
+			</div>
+			<div id="con_con">
+				<input type="text" id="title"placeholder="点击添加标题" />
+				<textarea id='texta' placeholder="日志内容"></textarea>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="page_bot"></div>
+</body>
+</html>

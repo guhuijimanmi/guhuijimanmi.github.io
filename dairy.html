@@ -1,0 +1,178 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="images/ico" href="images/cat4.ico" />
+<title>随笔杂谈</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="js/data.js"></script>
+<script src="js/page_turning.js"></script>
+<script src="js/one.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/power.js"></script>
+<script>
+	window.onload=function(){
+		var lis=document.getElementsByClassName('page_right_menu')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+		var str;
+		var dairy = document.getElementById('dairy_dairy');
+		var dairy_page=document.getElementsByClassName('dairy_page')[0];
+		var hash=window.location.hash;
+		var pageLen=0;
+		var page=3;
+		var t_box=document.getElementsByClassName('t_box')[0];
+		var del_dairy=document.getElementsByClassName('delete');
+		//删除日志
+		
+		for(var i=0;i<del_dairy.length;i++){
+			del_dairy[i].onclick=function(){
+			var num=Number(this.innerHTML.substring(3));
+			alert(num)
+			}
+		}
+		//console.log(del_dairy);
+		//读取最新日志
+		   var s='dairy=read';
+		   var arr=[];
+			ajax('php/readdairy.php',function(str){
+				arr=str.split('￥');
+				for(var i=0;i<arr.length-1;i=i+3){
+					Data._date.push(arr[(2+i)]);
+					Data.content.push(arr[(0+i)]);
+					Data.title.push(arr[(1+i)]);
+				}
+			},function(){},s)
+	
+		//翻页
+		page_turnning(lis,"img/miaotwo.png");
+		for(var i=0;i<lis.length;i++){
+			lis[i].addEventListener('click',function(){
+				t_box.style.display='none';
+				setTimeout(function(){
+					t_box.style.display='block';
+				},2000)
+			})
+		}
+		
+			setTimeout(function(){
+				//总共生成多少页
+			pageLen=Math.ceil(Data.title.length/page);
+			//pageLen=Math.ceil((arr.length/3)/page);
+			//生成页码
+			str='';
+			for(var i=0;i<pageLen;i++){
+				str+='<span><a href="javascript:;">'+(i+1)+'</a></span>';
+			}
+			dairy_page.innerHTML=str;
+			var dairy_span=document.getElementsByClassName('dairy_page')[0].getElementsByTagName('span');//添加后才能获取
+			dairy_span[0].className='focus';//第一个页码是默认亮的
+			
+			//实现分页
+			for(var i=0;i<dairy_span.length;i++){
+				dairy_span[i].index=i;
+				dairy_span[i].onclick=function(){
+					window.location.hash='#p='+(this.index+1);
+				}
+			}
+			
+			
+			//监控hash变化
+			window.onhashchange=function(){
+				//hash值是分页的页码的下标+1;
+				var pageNum=window.location.hash.substring(1).split('=')[1]-1;
+				for(var i=0;i<dairy_span.length;i++){
+					dairy_span[i].className='';
+				}
+				dairy_span[pageNum].className='focus';
+	//			//显示内容它在数组中的起始位置和结束位置。
+				var start=pageNum*3;
+				if(Data.title.length-start-page<0){
+					var end=0;
+				}else{
+					var end=Data.title.length-start-page;
+				}
+				fn_dairy(start,end);
+			}
+			
+			//window加载完之后就出现第一页
+			if(hash){			
+				window.onhashchange();
+			}else{
+				fn_dairy(0,Data.title.length-page);
+			}
+			},30)
+		
+			
+		
+		//生成日志封装成函数
+		function fn_dairy(start,end){
+//			
+			str='';
+			for(var i=Data.title.length-start;i>end;i--){
+				str+='<div class="box"><span class="date">发表于：'+Data._date[i-1]+'</span><span class="title">&nbsp;&nbsp;&nbsp;★&nbsp;'+Data.title[i-1]+'</span><p class="content">&nbsp;&nbsp;'+Data.content[i-1].substring(0,100)+'......【<a href="dairy_content.html?s='+(i-1)+'#pages='+(Math.ceil(start/3)+1)+'">更多</a>】【<em class="delete">删除第'+i+'篇日志</em>】<span class="foot">'+Data.foot+'</span></p></div>';
+//			    
+			}
+			dairy.innerHTML=str;
+		}
+	}
+</script>
+</head>
+<body>
+<div class="bg_top">
+  <div class="header_bg">
+  <div class="header">
+  <a href="index.html" class="logo" title="我的博客"></a>
+  <a href="#/en/" title="English" class="lan en" ></a>
+  <a href="#" title="中文版" class="lan cn" style="background-position:left top;"></a>
+  </div>
+  </div>
+</div>
+<div class="page_box page_box_bg">
+<div class="home_menu"><a href="index.html"></a></div>
+
+<div class="op" style="width: 30px; height: 80px;position: absolute;left: 110px;top: 100px;background-color: burlywood;border-radius: 10px;text-align: center;">
+	<span class="new_dairy" style="">新建日志</span>
+</div>
+	<!--放简要日志的-->
+	<div class="t_box">
+		<div id="dairy">
+			<div id="dairy_dairy"></div>
+			<div class="dairy_page">
+				<!--<span><a href="#">1</a></span>
+				<span><a href="#">2</a></span>
+				<span><a href="#">3</a></span>-->
+			</div>
+			<div class="pages"></div>
+			</div>	
+	</div>  
+	<div class="div_rotate"><img src="" class="img_rotate rotate_dairy" /></div>
+  <div class="page_right_menu" >
+    <ul>
+      <li class="menu_1"><a href="#" title="关于我"></a></li>
+      <li class="menu_2"><a class="on" href="#" title="随笔杂谈"></a></li>
+      <li class="menu_5"><a href="#" title="相册"></a></li>
+      <li class="menu_6"><a href="#" title="留言板"></a></li>
+      <li class="menu_4"><a href="#" title="works"></a></li>
+    </ul>
+  </div>
+</div>
+</div>
+<div class="page_bot"></div>
+</body>
+</html>
+<script>
+var op=document.getElementsByClassName('op')[0]; 
+
+	    		op.onclick=function(){
+	    			if(getCookie()=='d'){
+	    				window.location='dairy_new.html';
+	    			}else{
+	    				alert('您没有权限新增');
+	    			}
+	    			
+				
+			}
+		function getCookie(){
+			return (document.cookie[1]);
+		}
+</script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button"value="1111111111" />
+	</body>
+</html>
+<script src="js/ajax.js"></script>
+<script>
+	var btn=document.getElementsByTagName('input')[0];
+	var s='username=';
+	btn.onclick=function(){
+		ajax('11111.php',function(str){
+			alert(str);
+		},function(){
+			alert('fail');
+		},s)
+	}
+</script>

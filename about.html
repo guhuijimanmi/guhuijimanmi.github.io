@@ -1,0 +1,120 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="images/ico" href="images/cat4.ico" />
+<title>关于我</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+		
+</head>
+<body>
+<div class="bg_top">
+  <div class="header_bg">
+  <div class="header">
+  <a href="index.html" class="logo" title="我的博客"></a>
+  <a href="#/en/" title="English" class="lan en" ></a>
+  <a href="#" title="中文版" class="lan cn" style="background-position:left top;"></a>
+  </div>
+  </div>
+</div>
+<div class="page_box page_box_bg">
+<div class="home_menu"><a href="index.html"></a></div>
+	<div class="page_left_menu">
+    <ul>
+    	<!--<li class="menu1"><a href="#" title=""></a></li>-->
+       <!--<li class="menu2"><a href="#" title=""></a></li>-->
+        <!--<li class="menu3"><a href="#" title=""></a></li>-->
+    </ul>
+    </div>
+  <div class="index_left page_left about_l">
+  		<img src="images/zr.jpg" id="me" />
+  		<img src="images/me1.png" id="me_talk" />
+  		<div id="me_intro">
+  			<p>
+		    		<span>姓名: &nbsp;周芮 &nbsp;&nbsp;&nbsp;&nbsp;年龄: &nbsp;23</span>
+		    		<span>性别: &nbsp;女 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;居住地: &nbsp;北京</span>
+		    		<span>毕业学校: &nbsp;西北大学 本科</span>
+		    		<span>专业: &nbsp;信息管理与信息系统</span>
+		    		<span>工作方向: &nbsp;前端开发</span>
+		    		<span>联系方式: &nbsp;18612315856</span>
+		    	</p>	
+  		</div>
+  </div>
+  <div class="index_right page_right about_r">
+  	<div id="tab">
+	  	    <div>
+	  	    		<em class="em">基本信息</em>
+	  	    </div>
+	  	    <div><em class="em">web开发技能</em></div>
+  	    		<div><em class="em">web开发经验</em></div>
+  	</div>
+  		<img src = "images/old1.png" id="he" />
+  		<img src = "images/he1.png" id="he_talk" />
+  		<div id = "he_que">介绍一下自己吧</div>
+  		<div class="div_rotate"><img src="" class="img_rotate rotate_about" /></div>
+ </div>
+  <div class="page_right_menu" >
+     <ul>
+      <li class="menu_1"><a class="on" href="#" title="关于我"></a></li>
+      <li class="menu_2"><a href="#" title="随笔杂谈"></a></li>
+      <li class="menu_5"><a href="#" title="相册"></a></li>
+      <li class="menu_6"><a href="#" title="留言板"></a></li>
+      <li class="menu_4"><a href="#" title="作品集"></a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="link"></div>
+</div>
+<!--<div id="resume_wrap">
+	<div id="resume1" class="resume_class">left</div>
+	<div id="resume" class="resume_class">最大
+		<img src="images/6.png" id="max" />
+	</div>
+	<div id="resume2" class="resume_class">right</div>
+</div>-->
+	
+	
+</div>
+</div>
+</div>
+<div class="page_bot"></div>
+</body>
+</html>
+<script src="js/one.js"></script>
+<script src="js/page_turning.js"></script>
+<script>
+  var lis=document.getElementsByClassName('page_right_menu')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+    var tabs=document.getElementById('tab').getElementsByTagName('div');
+    var me=document.getElementById('me_intro');
+    var mePhoto=document.getElementById('me');
+    var he=document.getElementById('he_que');
+    var json={
+    		"me":['<p><span>姓名: &nbsp;周芮 &nbsp;&nbsp;&nbsp;&nbsp;年龄: &nbsp;23</span><span>性别: &nbsp;女 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;居住地: &nbsp;北京</span><span>毕业学校: &nbsp;西北大学 本科</span><span>专业: &nbsp;信息管理与信息系统</span><span>工作方向: &nbsp;前端开发</span><span>联系方式: &nbsp;18612315856</span></p>','<p><span>熟练使用 HTML、CSS、javascript 进行页面编写 </span><span>熟练使用框架 jquery 以及 bootstrap 进行页面编写</span><span>熟练使用 PS 进行切图处理</span><span>photoshop: 会切图以及简单P图</span><span>熟悉 JS 原生、DOM、BOM、ajax 以及面向对象 </span><span>使用过 PHP+MySQL 进行开发,对 C/C++、数据结构、SQL 有一定了解 了解 http 协议、前端 SEO、sass、H5、CSS3 新特性,会使用 git/svn</span></p>','<p><span>2016.1--2016.3 圣火炜业文化传媒<br/><br/>&nbsp&nbsp&nbsp负责配合前端工程师完成网页设计图以及需要的效果。主要工作内容有:公司新版订单选择业务页面、服务选择等页面的编写。</span></p>'],
+		"he":['介绍一下自己吧','web技能怎么样？','有什么经验？']
+    }
+//翻页
+page_turnning(lis,"img/girl.png");
+
+//点击切换
+    for(var i=0;i<tabs.length;i++){
+    		tabs[i].index=i;
+    		tabs[i].onclick=function(){
+    			var a=this.index;
+    			me.style.opacity=0;
+    			he.style.opacity=0;
+    			me.innerHTML=json.me[this.index];
+    			he.innerHTML=json.he[this.index];
+    			var num=0;
+    			var timer=setInterval(function(){
+    				num=num+0.1;
+    				me.style.opacity=num;
+    				he.style.opacity=num;
+    				if(num>1){
+    					clearInterval(timer);
+    				}
+    			},100)
+    		}
+    }
+</script>

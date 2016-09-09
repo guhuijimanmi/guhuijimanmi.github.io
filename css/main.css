@@ -1,0 +1,137 @@
+	html{height: 100%;}
+	body {
+		height: 100%;
+		margin: 0px;
+		padding: 0px;
+		background:url(../img/main_bg.gif) left top;
+		
+		font-family: 'Source Sans Pro', sans-serif;
+	}
+	#box{
+		width: 100%;
+		background-color:rgba(0,0,0,0.8);
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		z-index: 50;
+		}
+	#close{
+		width: 60px;
+		height: 30px;
+	}
+	#close img{
+		
+	}
+	#photo{
+		width: 750px;
+		height: 500px;
+		border: 20px solid white;
+		position: absolute;
+		left: 320px;
+		top: 150px;
+		background-color: #000000;
+		transition:all 1s;
+	}
+	
+	#box #left{
+		position: absolute;
+		top: 500px;
+		left: 150px;transition:all 1s;
+	}
+	#box #right{
+		position: absolute;
+		top: 500px;
+		right: 150px;transition:all 1s;
+	}
+	
+	.albums{
+		width: 100%;
+	    float: left;
+	}
+	.albums-inner{
+		width: 1000px;
+		margin-top: 120px;
+		margin-right: auto;
+		margin-left: auto;
+		
+	}
+	/*.albums-title1{
+		float: left;
+		width: 100%;
+		color: rgba(53,117,159,1);
+		font-size: 20px;
+		border-bottom-width: 2px;
+		border-bottom-style: solid;
+		border-bottom-color: rgba(53,117,159,1);
+		line-height: 50px;
+		margin-bottom: 100px;
+	}*/
+	.albums-tab{
+		width: 100px;
+	}
+	.albums-tab-r:nth-child(1){
+		width: 100px;
+		position: absolute;
+		left: 546px;
+		top:100px;
+		transform: rotate(-14deg);
+	}
+	.albums-tab-r:nth-child(2){
+		width: 100px;
+		position: absolute;
+		left: 650px;
+		top:260px;
+		transform: rotate(24deg);
+	}
+	.albums-tab-r:nth-child(3){
+		position: absolute;
+		left: 520px;
+		top:440px;
+	}
+	
+	.albums-tab:nth-child(1){
+		position: absolute;
+		left: 80px;
+		top:100px;
+		transform: rotate(-4deg);
+	}
+	.albums-tab:nth-child(2){
+		position: absolute;
+		left: 240px;
+		top:260px;
+		transform: rotate(14deg);
+	}
+	.albums-tab:nth-child(3){
+		position: absolute;
+		left: 150px;
+		top:400px;
+		transform: rotate(24deg);
+	}
+	.albums-tab:nth-child(3n+0) {
+		margin-right: 0px;
+	}
+	
+	.albums-tab-thumb{
+		float: left;
+		width: 300px;
+		height: 200px;
+	}
+	.albums-tab-thumb img {
+		height: auto;
+		width: 200px;
+		background-color: rgba(255,255,255,1);
+		padding: 5px;		
+	}
+	.albums-tab-text{
+		float: left;
+		width: 100%;
+		text-align: center;
+		color: rgba(53,117,159,1);
+		margin-top: 15px;
+		font-size: 18px;
+	}
+	
+	.albums-tab-text span {
+		font-size: 14px;
+		color: rgba(102,102,102,1);
+	}

@@ -1,0 +1,312 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" type="images/ico" href="images/cat4.ico" />
+		<title>留言板</title>
+
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		
+		<script>
+			window.onload=function(){//默认显示留言，从最近开始显示。
+				var pre=document.getElementById('pre');
+				var next=document.getElementById('next');
+				var is=0;
+				var s='is=0';
+				var login=false;
+				selemess();
+				 pre.onclick=function(){
+				 	if(is==0){
+						alert("这已经是最上的一条啦")
+					}else{
+						is--;
+						s='is='+is;
+						selemess();
+					}
+				 }
+				 next.onclick=function(){
+					is++;
+					s='is='+is;
+					selemess();
+				 }
+				//session登陆保持
+				var iss='iss=true'
+				ajax('php/issession.php',function(str){
+					login=true;
+				},function(){},iss)
+				 
+				function selemess(){
+					
+					ajax('php/messselect.php',function(str){
+					//将从数据库中获取到的值分解后放到留言板上。
+						var arr=str.split('zhourui');
+						mess_show.innerHTML='<span>'+arr[0]+'</span><p>'+arr[1]+'</p><span>于'+arr[2]+'</span>';
+						if(str=='erro'){
+							alert("这是最早的一条啦")
+						}
+					
+					},function(){},s)
+				}
+//				var date=new Date();
+//
+//				 date.setDate(date.getDate()+10);
+//				 document.cookie='userName = username;password= password;expires ='+date.toUTCString();	
+				
+			}
+		</script>
+		
+	</head>
+
+	<body>
+		<div class="bg_top">
+			<div class="header_bg">
+				<div class="header">
+					<a href="index.html" class="logo" title="留言板"></a>
+					<a href="#/en/" title="English" class="lan en"></a>
+					<a href="#" title="中文版" class="lan cn" style="background-position:left top;"></a>
+				</div>
+			</div>
+		</div>
+		<div class="page_box page_box_bg">
+			<div class="home_menu">
+				<a href="index.html"></a>
+			</div>
+
+			<div class="index_left page_left job_l">
+				<div id="mess2">
+					<div id="alreadylog">
+						<!--<i>欢迎您亲，畅所欲言的来留言吧！！</i>-->
+					</div>
+					<img src="images/message2.png"/>
+					<div class="mess_take">
+						<form  method="post" name="mess_form">
+							<textarea name="message"></textarea>
+						</form>
+						<dd class="submess">提交</dd>
+					</div>
+					<span id="login">快来<em id="login1">留言</em>吧亲~~~</span>
+				</div>
+			</div>
+			<div class="index_right page_right job_r">
+				<div id="mess1">
+					<img src="images/message1.png"/>
+					<div class="mess_show">
+						<!--<span>shuishuishui</span>
+						<p>lalalalalal,看你啦</p>
+						<span>于2016.03.08</span>-->
+					</div>
+					<div style="position: relative; left: 100px;bottom: 80px;">
+						<input type="button" value="上一条留言" id="pre"></input>
+						<input type="button" value="下一条留言" id="next"></input>
+					</div>
+					<div id="alreadymess">
+						<!--<i>谢谢您亲的留言</i>-->
+					</div>
+				</div>
+				<div class="div_rotate"><img src="" class="img_rotate rotate_message" /></div>
+			</div>
+			<div class="page_right_menu">
+				<ul>
+					<li class="menu_1">
+						<a href="#" title="关于我"></a>
+					</li>
+					<li class="menu_2">
+						<a href="#" title="随笔杂谈"></a>
+					</li>
+					<li class="menu_5">
+						<a href="#" title="相册"></a>
+					</li>
+					<li class="menu_6">
+						<a class="on" href="#" title="留言板"></a>
+					</li>
+					<li class="menu_4">
+						<a href="#" title="works"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="page_bot"></div>
+		</div>
+		<div id="log_div">
+			<div id="log_img" >
+				<div id="div_back"><i id="back">不想留，走了！！</i></div>
+				<form name="log_form" method="post">
+					<div class="user">
+							<span>亲的名字</span><input type="text"  value="username" name="username"/><br />
+							<span>亲的密码</span><input type="text"  value="password" name="password"/>
+					</div>
+					<div id="btn">
+						<input type="button" value="OK啦" class="inp1" id="log_sub"/>
+						<input type="reset" value="重新填啦"/class="inp2">
+					</div>
+				</form>
+				<div id="livemess">
+					<a href="javascript:;">亲想留言吗？没有账号吗？快来<em class="pink">戳这里</em></a>
+				</div>
+			</div>
+		</div>
+		<div id="reg_div">
+			<div class="reg_user">
+				<form name="form" method="post">
+					<div class="reg_img">
+						<span>亲的名字</span><input type="text"  value="username" name="user"/><br />
+						<span>亲的密码</span><input type="password"  value="password" name="psw"/><br />
+						<!--<span>亲的mima</span><input type="password"  value="password" /><br />-->
+					</div>
+					<input type="submit"  value="注册撒~" class="reg_sub" name="submit" id="submit"/>
+				</form>
+					<i class="reg_back">不想留，走了！！</>
+			</div>
+			
+		</div>
+	</body>
+
+</html>
+<script src="js/one.js"></script>
+<script src="js/ajax.js"></script>
+<script>
+	//翻页
+	var _rotate=document.getElementsByClassName('img_rotate')[0];
+	var lis=document.getElementsByClassName('page_right_menu')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+	var timer;
+	var mess2_img=document.getElementById('mess2').getElementsByTagName('img')[0];
+	var mess_take=document.getElementsByClassName('mess_take')[0];
+	var mess_show=document.getElementsByClassName('mess_show')[0];
+	var login=document.getElementById('login1');
+	var back=document.getElementById('back');
+	var log_div=document.getElementById('log_div');
+	var reg_div=document.getElementById('reg_div');
+	var reg_back=document.getElementsByClassName('reg_back')[0];
+	var em=log_div.getElementsByTagName('em')[0];
+	var sub=document.getElementById('submit');
+	var alreadylog=document.getElementById('alreadylog');
+	var alreadymess=document.getElementById('alreadymess');
+	var submess=mess_take.getElementsByClassName('submess')[0];
+	var logoff=false;
+	var log_sub=document.getElementById('log_sub');
+	for(var i=0;i<lis.length;i++){
+		lis[i].index=i;
+		lis[i].onclick=function(){
+			var num=0;
+			var INDEX=this.index;
+			_rotate.src="img/shouhui.png";//添加图片
+			timer=setInterval(function(){
+				num=num-10;//翻页速度
+				_rotate.style.cssText="transform: rotateY("+num+"deg)";
+				if(num<-170){
+				clearInterval(timer);
+				_rotate.src="";
+						switch(INDEX){//判断跳到哪一页
+							case 0:
+										window.location="about.html";
+										break;
+							case 1:
+										window.location="dairy.html";
+										break;
+							case 2:
+										window.location="photo.html";
+										break;
+							case 3:
+										window.location="message.html";
+										break;			
+							case 4:
+										window.location="games.html";
+										break;
+						}
+					}
+				},40)
+			
+		}
+	}
+	//点击注册，调用ajax函数
+	sub.addEventListener('click',function(e){
+			var s='user='+form.user.value+'&psw='+form.psw.value;
+			ajax('php/reg2.php',function(str){
+				if(str=='okla'){
+					reg_div.style.display='none';
+				log_div.style.display='block';
+				}else{
+					alert(str);
+				}
+			},function(){
+				alert('注册失败');
+			},s)
+			e.preventDefault();//默认行为阻止
+			e.cancelBubble=true;//冒泡
+	},false)
+	//点击留言板出现留言框
+		mess2_img.onclick=function(){
+			if(!mess_take.off){
+				mess_take.style.display='block';
+			}
+		}
+		//点击留言后登录框出现
+		function log(){
+			log_div.style.display='block';
+		}
+		login.addEventListener('click',log,false)
+		//返回
+		back.addEventListener('click',function(){
+			log_div.style.display='none';
+		},false)
+		//不想注册
+		reg_back.addEventListener('click',function(){
+			reg_div.style.display='none';
+		},false)
+		//注册
+		em.addEventListener('click',function(){
+			log_div.style.display='none';
+			reg_div.style.display='block';
+		},false)
+		log_sub.addEventListener('click',function(e){//登录实现
+			var s='user='+log_form.username.value+'&psw='+log_form.password.value;
+			ajax('php/log1.php',function(str){
+				if(str=='ok'){
+					logoff=true;
+					log_div.style.display='none';
+					login.removeEventListener('click',log,false);
+					login.addEventListener('click',function(){
+						mess2_img.onclick();
+					},false)
+					alreadylog.innerHTML='<i>欢迎您'+log_form.username.value+'，畅所欲言的来留言吧！！</i>'
+				}else{
+					alert(str);
+				}
+			},function(){
+				alert('登录失败');
+			},s)
+			e.preventDefault();//默认行为阻止
+			e.cancelBubble=true;//冒泡
+		},false)
+		//留言实现
+		submess.addEventListener('click',function(){
+			if(logoff==true){
+				var s='user='+log_form.username.value+'&content='+mess_form.message.value;
+				ajax('php/mess.php',function(str){
+					if(str=='ok'){
+						//读取留言板内容，添加到右侧
+						var oDate=new Date();//获取日期。
+					    var iYear=oDate.getFullYear();//获取年份
+					    var iM=oDate.getMonth()+1;//获取月份，月份是从0开始的。
+					    var iD=oDate.getDate();//获取到一个月中的那一天。
+					    var iH=oDate.getHours();//获取小时。
+					    var iMin=oDate.getMinutes();//获取分钟
+					    var iS=oDate.getSeconds();//获取秒。
+					    var ostr=iYear+'年'+iM+'月'+iD+'日'+iH+':'+iMin+':'+iS;
+						mess_show.innerHTML='<span>'+log_form.username.value+'</span><p>'+mess_form.message.value+'</p><span>于'+ostr+'</span>';
+						mess_form.message.value='';//清空留言板
+						alreadymess.innerHTML='<i style="position:relative;left: 100px;top:40px;font-size: 25px;color: #7B4E33;">谢谢亲的留言哦~~</i>';
+					}else{
+						alert(str);
+					}
+				},function(){
+					alert('留言失败');
+				},s)
+			}else{
+				alert('请先登录再留言');
+			}
+		},false)
+</script>
