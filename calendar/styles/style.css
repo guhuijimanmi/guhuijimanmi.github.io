@@ -1,0 +1,79 @@
+
+			body{
+				display: flex;
+				justify-content: center;
+			}
+			#_calendar_container{
+				width: 80vw;
+				min-height: 50vh;
+				font-family:"times new roman";
+				display: flex;
+				flex-direction:row;
+				justify-content: space-between;
+			}
+			#_calendar_information{
+				width: 53%;
+			}
+			#_calendar{
+				width: 40%;
+			}
+			h2{
+				font-size: 2.2vw;
+				color: #37414d;
+			}
+			h5{
+				font-size: 1.7vw;
+				color: #8a888b;
+				margin-top: 1vh;
+			}
+			ul{
+				font-size: 1.8vw;
+				margin: 1.8vw 0 0 3vw;
+			}
+			li{
+				margin-top: 1.8vw ;
+				display: flex;
+				justify-content: space-between;
+			}
+			span{
+				color: #000000;
+				font-weight: 900;
+				
+			}
+			em{
+				color: #3a3a3c;
+				
+			}
+			@media only screen and (max-width: 500px) {
+			    #_calendar_container {
+			        width:100%;
+			        min-height: 100vh;
+					flex-direction:column;
+					justify-content:space-around;
+			    }
+			
+			   #_calendar_information {
+			        width:90%;
+			        order: 2;
+			    }
+			
+			    #_calendar {
+			        width:100%;
+			        margin-top: 10vh;
+			        order: 1;
+			    }
+			    h2{
+					font-size: 3.2vh;
+				}
+				h5{
+					font-size: 2vh;
+					margin-top: 1vh;
+				}
+				ul{
+					font-size: 1.8vh;
+					margin: 1.8vh 0 0 3vh;
+				}
+				li{
+					margin-top: 1.8vh ;
+				}
+			

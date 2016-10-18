@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+		<title></title>
+		<link href="styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="styles/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/style.css"/>
+</head>
+	</head>
+	<body>
+		<div id="_calendar_container">
+			<div id="_calendar_information">
+				<h2>Step2: Select Early Payment Date</h2>
+				<h5>Select different dates to see different discount rates.</h5>
+				<ul>
+					<li><span>Early Payment Date</span><em id="today"><!--8/2/2013--></em></li>
+					<li><span>Discount Percent</span><em>1.207%</em></li>
+					<li><span>Discount Amount</span><em>$842.65</em></li>
+				</ul>
+			</div>
+			<div id="_calendar">
+				<input type="text" id="mydate" gldp-id="mydate" style="border-style: none;outline:none; "readonly unselectable="on"/>
+    				<!--日历插件-->
+			</div>
+		</div>
+	</body>
+</html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="glDatePicker.js"></script>
+				
+    <script type="text/javascript">
+        $(window).load(function()
+        {
+        	   var input=$('input');
+        	   var Dates=new Date();
+        	   var Ds=Dates.getDate()+'/'+(Dates.getMonth()+1)+'/'+Dates.getFullYear();//获取当前时间
+           input.glDatePicker();//调用日历插件
+           $('#_calendar div:first').css('top','1px');//调整插件位置
+           $('#today').text(Ds);//显示今日时间
+           
+     	});
+        
+	</script>
