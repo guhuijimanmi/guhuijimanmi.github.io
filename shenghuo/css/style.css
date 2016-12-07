@@ -276,11 +276,11 @@
 		.address{
 			width: 80%;
 			margin: 0.18rem auto;
-			font-size: 0.22rem;
 		}
 		.address span{
 			line-height:0.9rem;
 			color: #EFE5E5;
+			font-size: 0.22rem;
 		}
 		.address em{
 			color: #f5494d;
