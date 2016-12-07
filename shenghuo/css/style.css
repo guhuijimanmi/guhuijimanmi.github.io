@@ -170,7 +170,7 @@
 			font-size: 0.33rem;
 		}
 		.intro_fir,.intro_sec{
-			font-size: 0.28rem;
+			font-size: 0.4rem;
 			line-height: 0.8rem;
 			font-weight: 600;
 			
@@ -186,7 +186,7 @@
 		.photo{
 			position: absolute;
 			right: 0.33rem;
-			font-size: 0.34rem;
+			font-size: 0.4rem;
 			padding-top: 0.2rem;
 			color: #f5494d;
 			
@@ -227,12 +227,12 @@
 			margin: 0.4rem auto;
 		}
 		.company_intro h1{
-			font-size: 0.3rem;
+			font-size: 0.4rem;
 			font-weight: 500;
 			margin: 0.4rem 0;
 		}
 		.company ul li{
-			font-size: 0.2rem;
+			font-size: 0.4rem;
 			color: #545151;
 		}
 		.company ul li span{
@@ -243,7 +243,7 @@
 			color: #e36d6d;
 		}
 		.company li span:nth-child(2){
-			font-size: 0.24rem;
+			font-size: 0.4rem;
 			margin-left: 0.3rem;
 		}
 		.foot{
@@ -280,7 +280,7 @@
 		.address span{
 			line-height:0.9rem;
 			color: #EFE5E5;
-			font-size: 0.22rem;
+			font-size: 0.4rem;
 		}
 		.address em{
 			color: #f5494d;
