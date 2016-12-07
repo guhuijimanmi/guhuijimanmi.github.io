@@ -23,9 +23,6 @@
 			justify-content: center;
 			align-items: center;
 		}
-		.logo img{
-			
-		}
 		nav{
 			color: #FFFFFF;
 			background-color: #000000;
@@ -41,6 +38,7 @@
 			height: 1rem;
 			text-align: center;
 			line-height: 1rem;
+			font-size: 0.4rem;
 		}
 		#container{
 			margin-top: 1.4rem;
@@ -91,10 +89,10 @@
 			padding-left: 0.2rem;
 		}
 		#videoShow ul:nth-child(1) li:nth-child(1){
-			font-size: 30px;
+			font-size: 0.4rem;
 		}
 		#videoShow ul:nth-child(1) li:nth-child(2){
-			font-size: 26px;
+			font-size: 0.37rem;
 			color:#7f7d7d;
 			padding-right: 0.2rem;
 		}
@@ -107,7 +105,7 @@
 		}
 		.videoList li{
 			line-height: 0.8rem;
-			font-size: 26px;
+			font-size: 0.36rem;
 			color:#FFFFFF;
 			padding-left: 0.2rem;
 			padding-right: 0.2rem;
@@ -125,7 +123,7 @@
 		}
 		.box p{
 			color: #f4e446;
-			font-size: 32px;
+			font-size: 0.38rem;
 			margin: 0.34rem;
 		}
 		.video_intro{
@@ -164,15 +162,15 @@
 			margin-left: 0.34rem;
 		}
 		.intro_intro h2{
-			font-size: 30px;
+			font-size: 0.4rem;
 			margin-top: 0.1rem;
 			margin-bottom: 0.3rem;
 		}
 		.intro_intro span{
-			font-size: 28px;
+			font-size: 0.33rem;
 		}
 		.intro_fir,.intro_sec{
-			font-size: 20px;
+			font-size: 0.28rem;
 			line-height: 0.8rem;
 			font-weight: 600;
 			
@@ -188,13 +186,13 @@
 		.photo{
 			position: absolute;
 			right: 0.33rem;
-			font-size: 26px;
+			font-size: 0.34rem;
 			padding-top: 0.2rem;
-			color: #F2EA41;
+			color: #f5494d;
 			
 		}
 		.photo a{
-			color: #F4E446
+			color: #f5494d;
 		}
 		.artist_per{
 			width:4rem;
@@ -229,12 +227,12 @@
 			margin: 0.4rem auto;
 		}
 		.company_intro h1{
-			font-size: 24px;
+			font-size: 0.3rem;
 			font-weight: 500;
 			margin: 0.4rem 0;
 		}
 		.company ul li{
-			font-size: 18px;
+			font-size: 0.2rem;
 			color: #545151;
 		}
 		.company ul li span{
@@ -245,7 +243,7 @@
 			color: #e36d6d;
 		}
 		.company li span:nth-child(2){
-			font-size: 14px;
+			font-size: 0.24rem;
 			margin-left: 0.3rem;
 		}
 		.foot{
@@ -260,7 +258,7 @@
 			margin: 0 auto;
 			padding-bottom: 0.4rem;
 			border-bottom: 2px solid #efe5e5;
-			font-size: 32px;
+			font-size: 0.5rem;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
@@ -278,7 +276,7 @@
 		.address{
 			width: 80%;
 			margin: 0.18rem auto;
-			font-size: 0.2rem;
+			font-size: 0.22rem;
 		}
 		.address span{
 			line-height:0.9rem;
@@ -288,13 +286,12 @@
 			color: #f5494d;
 		}
 		.wechat_intro{
-			font-size: 26px;
+			font-size: 0.32rem;
 			width: 2.8rem;
 			margin: 0.2rem auto;
 			color: #EFE5E5;
 		}
 		.wechat{
-			border: 1px solid red;
 			width: 2.6rem;
 			height: 2.6rem;
 			margin: 0.1rem auto;
@@ -302,13 +299,16 @@
 		.bottom{
 			height: 1rem;
 			background: #f2ea41;
-			font-size: 26px;
+			font-size: 0.4rem;
 			padding: 0.3rem 0.2rem;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
 			align-items: center;
 			
+		}
+		.bottom a{
+			color:#f5494d ;
 		}
 		#large_wrap{
 			position: absolute;
@@ -330,44 +330,37 @@
 		}
 		#large_header{
 			height: 6%;
-			border: 1px solid red;
 			margin: 3%;
-			font-size: 38px;
+			font-size: 0.48rem;
 			display: flex;
 			justify-content: space-between;
 		}
 		.turn{
 			width: 16%;
-			border: 1px solid red;
 			display: flex;
 			justify-content: space-between;
 		}
 		.img_wrap{
 			margin: 3%;
 			height: 85%;
-			border: 1px solid #fff;
 			overflow: auto;
 		}
 		.img_wrap img{
 			width: 100%;
 			height: 7.6rem;
-			border: 1px solid red;
 		}
-		.img_wrap p{
-			
-		}
+		
 		.img_wrap h3{
-			font-size: 48px;
+			font-size: 0.56rem;
 			line-height: 1rem;
-			border: 1px solid red;
 		}
 		.img_intro{
 			display: flex;
 			justify-content: space-between;
+			font-size: 0.4rem;
 		}
 		.img_intro span{
 			width: 40%;
-			border: 1px solid red;
 		}
 		.show{
 			display: block;
