@@ -7,7 +7,7 @@ window.requestAnimFrame = (function(){
            window.oRequestAnimationFrame      || 
            window.msRequestAnimationFrame     || 
            function(/* function */ callback, /* DOMElement */ element){
-             window.setTimeout(callback, 1000 / 60);
+             window.setTimeout(callback, 1000/60);
            };
  })();
 
@@ -17,7 +17,7 @@ window.requestAnimFrame = (function(){
 
     function ribbon( context )
     {
-    	this.init( context );
+    	this.init( context );//初始化绘图环境
     }
 
     ribbon.prototype =
@@ -33,7 +33,7 @@ window.requestAnimFrame = (function(){
     	init: function( context )
     	{
     		this.context = context;
-    		this.context.lineWidth = 3;
+    		this.context.lineWidth = 7;
     		this.context.globalCompositeOperation = 'source-over';
 
     		this.mouseX = SCREEN_WIDTH / 2;
@@ -121,7 +121,7 @@ window.requestAnimFrame = (function(){
 
 
     var i, brush, BRUSHES = ["ribbon"],
-    COLOR = [0, 0, 0], BACKGROUND_COLOR = [250, 250, 250],
+    COLOR = [105, 105, 105], BACKGROUND_COLOR = [250, 250, 250],
     SCREEN_WIDTH = window.innerWidth,
     SCREEN_HEIGHT = window.innerHeight,
     container, foregroundColorSelector, backgroundColorSelector, menu, about,
@@ -388,8 +388,8 @@ function onMenuForegroundColor()
 	cleanPopUps();
 	
 	foregroundColorSelector.show();
-	foregroundColorSelector.container.style.left = ((SCREEN_WIDTH - foregroundColorSelector.container.offsetWidth) / 2) + 'px';
-	foregroundColorSelector.container.style.top = ((SCREEN_HEIGHT - foregroundColorSelector.container.offsetHeight) / 2) + 'px';
+	foregroundColorSelector.container.style.left = ((SCREEN_WIDTH - foregroundColorSelector.container.offsetWidth) / 2) + 'rem';
+	foregroundColorSelector.container.style.top = ((SCREEN_HEIGHT - foregroundColorSelector.container.offsetHeight) / 2) + 'rem';
 
 	isForegroundColorSelectorVisible = true;
 }
