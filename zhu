@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 60%;
+				height: 800px;
+				margin: 0 auto;
+				margin-top: 660px;
+				
+			}
+			#inp{
+				width: 80%;
+				font-size: 35px;
+			}
+			#btn{
+				width:40%;
+				font-size: 35px;
+				margin-top: 30px;
+				margin-left: 100px;
+			}
+			#resoult{
+				font-size: 35px;
+				margin-left: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div >
+				<input type="text" value="" id="inp"placeholder="请输入生成随机数的最大值" />
+			</div>
+			<div >
+				<button id="btn" value="点击生成">点击生成</button>
+			</div>
+			<p id="resoult"></p>
+		</div>
+	</body>
+</html>
+<script>
+	var inp = document.getElementById('inp');
+	var btn = document.getElementById('btn');
+	var res = document.getElementById('resoult');
+	
+	//点击按钮
+	btn.onclick = function(){
+		var n = RandomNumBoth(1,Number(inp.value));
+	 	res.innerHTML = '恭喜获奖的为第'+n+'个小宝贝';
+	}
+    
+	
+	
+	
+	
+	//随机生成函数
+	function RandomNumBoth(Min,Max){
+      var Range = Max - Min;
+      var Rand = Math.random();
+      var num = Min + Math.round(Rand * Range); //四舍五入
+      return num;
+    }
+</script>
